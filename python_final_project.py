@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # Q1: Relationship between the length of house-elves' ears and their DNA content
 def analyze_house_elves():
-    data = pd.read_csv('houseelf_earlength_dna_data.csv')
+    data = pd.read_csv('data/houseelf_earlength_dna_data.csv')
 
     # Processing rows to categorizing ear size and calculating GC-content of the DNA
     results = []
@@ -24,14 +24,14 @@ def analyze_house_elves():
     print(avg_gc_content)
 
     # Exporting to CSV file
-    results_df.to_csv('grangers_analysis.csv', index=False)
+    results_df.to_csv('results/grangers_analysis.csv', index=False)
 
 
 # Q2: Mammals' mass relationship analysis
 def analyze_mammals():
     # Importing data with error handling for malformed lines
     try:
-        mammals_data = pd.read_csv('Mammal_lifehistories_v2.txt', sep='\t', skipfooter=7, na_values=['-999', '-999.00'], engine='python')
+        mammals_data = pd.read_csv('data/Mammal_lifehistories_v2.txt', sep='\t', skipfooter=7, na_values=['-999', '-999.00'], engine='python')
     except Exception as e:
         print("Error reading the file:", e)
         return
@@ -45,6 +45,8 @@ def analyze_mammals():
     plt.xlabel('Adult Mass (g)')
     plt.ylabel('Newborn Mass (g)')
     plt.title('Adult Mass vs. Newborn Mass')
+    plt.savefig("plots/mass_vs_newborn.png", dpi=300, bbox_inches='tight')
+    # Showing the plot
     plt.show()
 
     # Plotting log10 of adult mass vs. log10 of newborn mass
@@ -53,6 +55,10 @@ def analyze_mammals():
     plt.xlabel('Log10(Adult Mass) (log10 g)')
     plt.ylabel('Log10(Newborn Mass) (log10 g)')
     plt.title('Log10(Adult Mass) vs. Log10(Newborn Mass)')
+
+    # Saving the figure as .png
+    plt.savefig("plots/log10_mass_vs_newborn.png", dpi=300, bbox_inches='tight')
+    # Showing the plot
     plt.show()
 
     # Filtering data for Rodentia
@@ -64,6 +70,8 @@ def analyze_mammals():
     plt.xlabel('Log10(Adult Mass) (log10 g)')
     plt.ylabel('Log10(Newborn Mass) (log10 g)')
     plt.title('Log10(Adult Mass) vs. Log10(Newborn Mass) - Rodentia')
+    plt.savefig("plots/log10_mass_vs_newborn_roden.png", dpi=300, bbox_inches='tight')
+    # Showing the plot
     plt.show()
 
     # Plotting adult mass vs. newborn mass, axes scaled logarithmically, and colored by order
@@ -76,6 +84,8 @@ def analyze_mammals():
     plt.ylabel('Log10(Newborn Mass) (log10 g)')
     plt.title('Log10(Adult Mass) vs. Log10(Newborn Mass) by Order')
     plt.legend(loc='best', fontsize='small')
+    plt.savefig("plots/log_mass_vs_newborn_allorders.png", dpi=300, bbox_inches='tight')
+    # Showing the plot
     plt.show()
 
     # Plotting a subplot for each order with different colors
@@ -89,6 +99,7 @@ def analyze_mammals():
         axes[i].set_xlabel('Log10(Adult Mass)')
         axes[i].set_ylabel('Log10(Newborn Mass)')
     plt.tight_layout()
+    plt.savefig("plots/log10_mass_vs_newborn_subplots.png", dpi=300, bbox_inches='tight')
     plt.show()
 
 # Running both Q1 and Q2 analyses
