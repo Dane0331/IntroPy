@@ -9,7 +9,7 @@ my_types = {
         'Number of proteins' : 'Int64'
     }
 
-euk = pd.read_csv("data\eukaryotes.tsv",
+euk = pd.read_csv("data/eukaryotes.tsv",
     sep="\t",
     dtype = my_types,
     na_values=['-']

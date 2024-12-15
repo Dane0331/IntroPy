@@ -1,5 +1,5 @@
 # Defining SARS-CoV-2 FASTA file path
-covid_file = 'sequence.fasta'
+covid_file = "data/sequence.fasta"
 
 # Opening the FASTA file with fhand
 def read_fasta(covid_file):
