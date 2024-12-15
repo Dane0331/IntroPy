@@ -55,8 +55,6 @@ def analyze_mammals():
     plt.xlabel('Log10(Adult Mass) (log10 g)')
     plt.ylabel('Log10(Newborn Mass) (log10 g)')
     plt.title('Log10(Adult Mass) vs. Log10(Newborn Mass)')
-
-    # Saving the figure as .png
     plt.savefig("plots/log10_mass_vs_newborn.png", dpi=300, bbox_inches='tight')
     # Showing the plot
     plt.show()
